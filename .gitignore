@@ -38,3 +38,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editor / tooling locale
+.claude/
+.vscode/
+.idea/
+
+# installer/binari accidentali
+*.msi
+*.exe
+*.dmg
+*.zip
