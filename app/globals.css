@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-height: 72px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-schiuma-50 text-pietra-900 font-sans antialiased;
+}
+
+/* Le sezioni con id ancora devono lasciare spazio sotto l'header sticky. */
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+/* Selezione testo */
+::selection {
+  background: theme("colors.adriatico.200");
+  color: theme("colors.adriatico.950");
+}
+
+/* Focus visibile coerente con il brand */
+:focus-visible {
+  outline: 2px solid theme("colors.adriatico.600");
+  outline-offset: 2px;
+  border-radius: 4px;
+}
