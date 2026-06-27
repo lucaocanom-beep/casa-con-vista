@@ -9,26 +9,27 @@ export const site = {
   region: "Marche",
   country: "IT",
 
-  // Indirizzo (per Schema.org / mappa). Sostituire con quello reale.
+  // Indirizzo (per Schema.org / mappa).
   address: {
-    street: "Lungomare Scarfiotti", // placeholder — sostituire
+    street: "Galleria Bitocchi 5",
     postalCode: "62017",
     locality: "Porto Recanati",
     region: "MC",
     country: "IT",
-    // Coordinate approssimative di Porto Recanati — sostituire con quelle dell'appartamento
-    lat: 43.4326,
-    lng: 13.6649,
+    // Coordinate indicative del centro di Porto Recanati — la mappa visiva usa
+    // l'indirizzo testuale di mapEmbed, qui servono solo per i dati strutturati SEO.
+    lat: 43.4332,
+    lng: 13.6657,
   },
 
-  // Contatti — sostituire con i recapiti reali
+  // Contatti
   contact: {
     email: "info@casaconvista.it",
-    phone: "+39 000 0000000",
-    whatsappNumber: "+390000000000", // formato internazionale, senza spazi
+    phone: "+39 335 1672597",
+    whatsappNumber: "+393351672597", // formato internazionale, senza spazi
     whatsappPrefilled: {
-      it: "Salve, vorrei informazioni su Casa con Vista a Porto Recanati.",
-      en: "Hi, I'd like info about Casa con Vista in Porto Recanati.",
+      it: "Ciao, potrei avere più info riguardo Casa con Vista a Porto Recanati?",
+      en: "Hi, could I have more info about Casa con Vista in Porto Recanati?",
     },
   },
 
@@ -36,7 +37,7 @@ export const site = {
   cin: "IT043042C22NTGGGC7",
 
   // URL pubblico (override via NEXT_PUBLIC_SITE_URL)
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://casaconvista.it",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://casaconvistaportorecanati.it",
 
   // Caratteristiche chiave dell'appartamento.
   // I numeri compaiono in Hero/Servizi/Casa e nei dati strutturati SEO.
@@ -50,10 +51,9 @@ export const site = {
     seaViewDistanceMeters: 50, // distanza in linea d'aria dal mare
   },
 
-  // Mappa: src per <iframe>. Centrato su Porto Recanati (lungomare).
-  // Sostituire con embed dell'indirizzo esatto via Google Maps → Condividi → Incorpora.
+  // Mappa: src per <iframe>. Punta all'indirizzo esatto.
   mapEmbed:
-    "https://www.google.com/maps?q=Porto+Recanati,+MC,+Italia&z=14&output=embed",
+    "https://www.google.com/maps?q=Galleria+Bitocchi+5,+62017+Porto+Recanati+MC,+Italia&z=17&output=embed",
 
   // Prezzi indicativi per notte (€). Adatta liberamente, le card li leggono da qui.
   pricing: [

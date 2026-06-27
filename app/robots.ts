@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/guida", "/guida-casa-con-vista-porto-recanati.html"],
       },
     ],
     sitemap: `${site.url}/sitemap.xml`,
