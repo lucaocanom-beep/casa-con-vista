@@ -216,7 +216,7 @@ export const en: typeof ItDict = {
   recensioni: {
     eyebrow: "Reviews",
     title: "What past guests say",
-    body: "A few words from recent guests. (Real testimonials go here — easy to replace whenever you want.)",
+    body: "A few words from recent guests.",
     items: [
       {
         quote:
@@ -371,6 +371,23 @@ export const en: typeof ItDict = {
       hoursLabel: "Hours",
       hoursValue: "Mon — Sun · 9:00 — 21:00",
     },
+  },
+
+  leadMagnet: {
+    eyebrow: "Free guide",
+    title: "The guide from someone who lives Porto Recanati",
+    body: "Hidden beaches, where to eat real brodetto, the best villages in the Marche. Leave your name and email: we'll send you the full guide right away.",
+    name: "Name",
+    namePlaceholder: "Your name",
+    email: "Email",
+    emailPlaceholder: "Your email",
+    submit: "I want the guide",
+    submitting: "One moment…",
+    success: "Done! You're about to be redirected to the guide.",
+    error: "Something went wrong. Please try again shortly.",
+    consent: "I agree to receive the guide by email.",
+    dismiss: "No, thanks",
+    close: "Close",
   },
 
   footer: {

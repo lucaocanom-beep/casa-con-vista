@@ -24,7 +24,7 @@ export const site = {
 
   // Contatti
   contact: {
-    email: "info@casaconvista.it",
+    email: "info@casaconvistaportorecanati.it",
     phone: "+39 335 1672597",
     whatsappNumber: "+393351672597", // formato internazionale, senza spazi
     whatsappPrefilled: {
@@ -53,7 +53,7 @@ export const site = {
 
   // Mappa: src per <iframe>. Punta all'indirizzo esatto.
   mapEmbed:
-    "https://www.google.com/maps?q=Galleria+Bitocchi+5,+62017+Porto+Recanati+MC,+Italia&z=17&output=embed",
+    "https://www.google.com/maps?q=Galleria+Bitocchi+5,+62017+Porto+Recanati+MC,+Italia&z=19&output=embed",
 
   // Prezzi indicativi per notte (€). Adatta liberamente, le card li leggono da qui.
   pricing: [

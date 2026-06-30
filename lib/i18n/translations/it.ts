@@ -216,7 +216,7 @@ export const it = {
   recensioni: {
     eyebrow: "Recensioni",
     title: "Le parole di chi ci ha già scelto",
-    body: "Recensioni di ospiti recenti. (Spazio per le testimonianze reali — sostituibili da te quando vorrai.)",
+    body: "Recensioni di ospiti recenti.",
     items: [
       {
         quote:
@@ -371,6 +371,23 @@ export const it = {
       hoursLabel: "Orari",
       hoursValue: "Lun — Dom · 9:00 — 21:00",
     },
+  },
+
+  leadMagnet: {
+    eyebrow: "Guida gratuita",
+    title: "La guida di chi vive Porto Recanati",
+    body: "Spiagge poco conosciute, dove mangiare il vero brodetto, i borghi delle Marche da non perdere. Lasciaci nome ed email: ti inviamo subito la guida completa.",
+    name: "Nome",
+    namePlaceholder: "Il tuo nome",
+    email: "Email",
+    emailPlaceholder: "La tua email",
+    submit: "Voglio la guida",
+    submitting: "Un attimo…",
+    success: "Fatto! Stai per essere reindirizzato alla guida.",
+    error: "Qualcosa è andato storto. Riprova tra poco.",
+    consent: "Acconsento a ricevere la guida via email.",
+    dismiss: "No, grazie",
+    close: "Chiudi",
   },
 
   footer: {

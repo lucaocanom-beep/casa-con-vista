@@ -7,6 +7,7 @@ import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
+import { LeadMagnetPopup } from "@/components/layout/LeadMagnetPopup";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -85,6 +86,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main id="main" className="flex-1">{children}</main>
         <Footer locale={locale} dict={dict} />
         <WhatsAppFloat locale={locale} dict={dict} />
+        <LeadMagnetPopup locale={locale} dict={dict} />
       </body>
     </html>
   );
