@@ -375,8 +375,9 @@ export const it = {
 
   leadMagnet: {
     eyebrow: "Guida gratuita",
-    title: "La guida di chi vive Porto Recanati",
-    body: "Spiagge poco conosciute, dove mangiare il vero brodetto, i borghi delle Marche da non perdere. Lasciaci nome ed email: ti inviamo subito la guida completa.",
+    title: "Le Marche che non trovi su Google",
+    body: "Piccole spiagge dove stare in pace, luoghi autentici dove mangiare bene, e angoli della regione che chi viene qui per la prima volta si perde sempre.",
+    bodyCta: "Se vuoi vivere Porto Recanati come chi la vive davvero, lasciaci nome ed email: ti mandiamo subito la guida completa.",
     name: "Nome",
     namePlaceholder: "Il tuo nome",
     email: "Email",
@@ -386,7 +387,7 @@ export const it = {
     success: "Fatto! Stai per essere reindirizzato alla guida.",
     error: "Qualcosa è andato storto. Riprova tra poco.",
     consent: "Acconsento a ricevere la guida via email.",
-    dismiss: "No, grazie",
+    dismiss: "Conosco già bene la zona",
     close: "Chiudi",
   },
 

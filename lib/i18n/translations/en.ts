@@ -375,8 +375,9 @@ export const en: typeof ItDict = {
 
   leadMagnet: {
     eyebrow: "Free guide",
-    title: "The guide from someone who lives Porto Recanati",
-    body: "Hidden beaches, where to eat real brodetto, the best villages in the Marche. Leave your name and email: we'll send you the full guide right away.",
+    title: "The Marche you won't find on Google",
+    body: "Small beaches where you can find peace, authentic places to eat well, and corners of the region that first-time visitors always miss.",
+    bodyCta: "If you want to experience Porto Recanati like a local, leave your name and email: we'll send you the full guide right away.",
     name: "Name",
     namePlaceholder: "Your name",
     email: "Email",
@@ -386,7 +387,7 @@ export const en: typeof ItDict = {
     success: "Done! You're about to be redirected to the guide.",
     error: "Something went wrong. Please try again shortly.",
     consent: "I agree to receive the guide by email.",
-    dismiss: "No, thanks",
+    dismiss: "I already know the area well",
     close: "Close",
   },
 

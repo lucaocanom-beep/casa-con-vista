@@ -14,6 +14,7 @@ type Props = {
 
 const STORAGE_KEY = "ccv-lead-magnet-dismissed";
 const SHOW_DELAY_MS = 6000;
+const RESHOW_DELAY_MS = 60000;
 const GUIDA_PATH = "/guida";
 
 const inputBase =
@@ -36,7 +37,7 @@ export function LeadMagnetPopup({ locale, dict }: Props) {
 
   function dismiss() {
     setVisible(false);
-    window.localStorage.setItem(STORAGE_KEY, "1");
+    window.setTimeout(() => setVisible(true), RESHOW_DELAY_MS);
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -117,7 +118,8 @@ export function LeadMagnetPopup({ locale, dict }: Props) {
             <h2 className="font-serif text-2xl sm:text-[1.7rem] leading-snug text-pietra-950 mb-3">
               {t.title}
             </h2>
-            <p className="text-sm text-pietra-600 leading-relaxed mb-6">{t.body}</p>
+            <p className="text-sm text-pietra-600 leading-relaxed mb-3">{t.body}</p>
+            <p className="text-sm text-pietra-600 leading-relaxed mb-6">{t.bodyCta}</p>
 
             <form onSubmit={onSubmit} noValidate className="space-y-3">
               <label className="sr-only" htmlFor="lead-name">{t.name}</label>
