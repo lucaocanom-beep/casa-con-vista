@@ -24,7 +24,7 @@ export const site = {
 
   // Contatti
   contact: {
-    email: "info@casaconvistaportorecanati.it",
+    email: "luca@casaconvistaportorecanati.it",
     phone: "+39 335 1672597",
     whatsappNumber: "+393351672597", // formato internazionale, senza spazi
     whatsappPrefilled: {

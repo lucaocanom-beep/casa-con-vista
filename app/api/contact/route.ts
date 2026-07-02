@@ -1,20 +1,11 @@
 import { NextResponse } from "next/server";
 
-// Endpoint del form contatti.
+// Form contatti — invia la richiesta a luca@casaconvistaportorecanati.it via Resend.
 //
-// Comportamento attuale: validazione del payload + log a console (mock).
-// Per attivare l'invio reale: vedi il blocco "TODO: invio email" in fondo.
-//
-// Opzioni consigliate per inviare la mail:
-//   A) Resend (https://resend.com)  — il più semplice, free tier generoso
-//      npm i resend
-//      const resend = new Resend(process.env.RESEND_API_KEY);
-//      await resend.emails.send({ from, to, subject, html });
-//   B) SMTP via nodemailer (host classico, es. server di posta del dominio)
-//   C) Formspree / Getform — niente codice server, basta cambiare l'action del form
-//
-// Imposta le env var su Vercel (Project → Settings → Environment Variables):
-//   RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL
+// Env var da impostare su Vercel (Project → Settings → Environment Variables):
+//   RESEND_API_KEY       — API key di Resend (resend.com → API Keys)
+//   CONTACT_FROM_EMAIL   — mittente verificato su Resend, es. noreply@casaconvistaportorecanati.it
+//   CONTACT_TO_EMAIL     — destinatario, es. luca@casaconvistaportorecanati.it
 
 export const runtime = "nodejs";
 
@@ -42,7 +33,6 @@ export async function POST(request: Request) {
     return bad("Invalid JSON body");
   }
 
-  // Validazione minima (server-side, indipendente dal client)
   const name = String(data.name ?? "").trim();
   const email = String(data.email ?? "").trim();
   const message = String(data.message ?? "").trim();
@@ -51,33 +41,40 @@ export async function POST(request: Request) {
 
   if (!name || name.length < 2) return bad("Name is required");
   if (!email || !EMAIL_RE.test(email)) return bad("Valid email is required");
-  // message può essere vuoto: alcuni utenti scrivono solo le date
 
-  // Honeypot opzionale: ignorare richieste con campi inattesi
-  // (lasciato libero per ora — aggiungere se compaiono spam)
+  console.log("[contact] new request", { name, email, dates, guests, message, locale: data.locale, at: new Date().toISOString() });
 
-  // Log mock — sostituire con invio reale
-  console.log("[contact] new request", {
-    name,
-    email,
-    dates,
-    guests,
-    message,
-    locale: data.locale,
-    at: new Date().toISOString(),
-  });
+  const resendKey = process.env.RESEND_API_KEY;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const toEmail = process.env.CONTACT_TO_EMAIL ?? "luca@casaconvistaportorecanati.it";
 
-  // TODO: invio email reale.
-  // Esempio Resend:
-  //   const { Resend } = await import("resend");
-  //   const resend = new Resend(process.env.RESEND_API_KEY!);
-  //   await resend.emails.send({
-  //     from: process.env.CONTACT_FROM_EMAIL!,
-  //     to: process.env.CONTACT_TO_EMAIL!,
-  //     replyTo: email,
-  //     subject: `Richiesta info — ${name}`,
-  //     text: `Nome: ${name}\nEmail: ${email}\nDate: ${dates}\nOspiti: ${guests}\n\n${message}`,
-  //   });
+  if (resendKey && fromEmail) {
+    try {
+      const { Resend } = await import("resend");
+      const resend = new Resend(resendKey);
+      await resend.emails.send({
+        from: fromEmail,
+        to: toEmail,
+        replyTo: email,
+        subject: `Nuova richiesta da ${name} — Casa con Vista`,
+        html: `
+          <h2>Nuova richiesta dal sito</h2>
+          <p><strong>Nome:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          ${dates ? `<p><strong>Date:</strong> ${dates}</p>` : ""}
+          ${guests ? `<p><strong>Ospiti:</strong> ${guests}</p>` : ""}
+          ${message ? `<p><strong>Messaggio:</strong><br>${message.replace(/\n/g, "<br>")}</p>` : ""}
+          <hr>
+          <p style="color:#888;font-size:12px">Puoi rispondere direttamente a questa email: la reply andrà a ${email}</p>
+        `,
+      });
+    } catch (err) {
+      console.error("[contact] Resend failed", err);
+      // Non blocchiamo l'utente se l'email fallisce: loghiamo e restituiamo ok
+    }
+  } else {
+    console.warn("[contact] RESEND_API_KEY o CONTACT_FROM_EMAIL non impostati — email non inviata");
+  }
 
   return NextResponse.json({ ok: true });
 }
