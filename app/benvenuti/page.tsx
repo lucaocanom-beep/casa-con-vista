@@ -7,231 +7,208 @@ export const metadata: Metadata = {
 
 export default function BenvenutiPage() {
   return (
-    <main className="min-h-screen bg-[#f5f0eb]" style={{ fontFamily: "Georgia, serif" }}>
+    <main className="min-h-screen bg-schiuma-50">
 
-      {/* Header */}
-      <div className="bg-pietra-950 text-schiuma-50 text-center py-3 text-sm tracking-wide">
-        Per qualsiasi necessità contattami su WhatsApp:{" "}
-        <a href="https://wa.me/393351672597" className="underline font-medium">
-          335 167 2597
+      {/* Hero */}
+      <div className="bg-adriatico-950 text-schiuma-50 px-6 py-16 sm:py-24 text-center">
+        <p className="text-xs uppercase tracking-widest2 text-schiuma-100/60 mb-4">
+          Casa con Vista · Porto Recanati
+        </p>
+        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight text-schiuma-50 mb-6">
+          La vostra guida per un<br className="hidden sm:block" /> soggiorno perfetto
+        </h1>
+        <p className="text-lg text-schiuma-100/80 max-w-md mx-auto">
+          Siamo felici di avervi qui. Godetevi il vostro soggiorno a Porto Recanati.
+        </p>
+        <a
+          href="https://wa.me/393351672597"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white h-11 px-6 text-sm font-medium hover:opacity-90 transition-opacity"
+        >
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor" aria-hidden>
+            <path d="M19.11 17.39c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.98 2.65 1.12 2.84.14.18 1.94 2.97 4.71 4.16.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.18.16-1.3-.07-.12-.25-.18-.52-.32zM16.02 6.18c-5.42 0-9.83 4.41-9.83 9.83 0 1.92.56 3.79 1.61 5.41l-1.06 3.86 3.97-1.04a9.81 9.81 0 0 0 5.31 1.55h.01c5.42 0 9.83-4.41 9.83-9.83a9.78 9.78 0 0 0-2.88-6.95 9.78 9.78 0 0 0-6.96-2.83zm0 17.91h-.01a8.16 8.16 0 0 1-4.16-1.14l-.3-.18-3.07.81.82-2.99-.2-.31a8.13 8.13 0 0 1-1.25-4.35c0-4.51 3.67-8.17 8.18-8.17 2.18 0 4.23.85 5.78 2.4a8.12 8.12 0 0 1 2.39 5.78c0 4.51-3.67 8.17-8.18 8.17z" />
+          </svg>
+          Per qualsiasi necessità: 335 167 2597
         </a>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 py-14">
-
-        {/* Benvenuto */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-pietra-950 leading-tight mb-6">
-            La vostra guida per un soggiorno perfetto
-          </h1>
-          <p className="text-xl text-pietra-700 font-medium">
-            Siamo felici di avervi qui!<br />Godetevi il vostro soggiorno a Porto Recanati.
-          </p>
-        </div>
-
-        <hr className="border-pietra-300 mb-16" />
+      <div className="mx-auto max-w-3xl px-6 py-16 space-y-20">
 
         {/* Regole */}
-        <Section title="Le nostre semplici regole">
-          <p className="text-pietra-700 leading-relaxed mb-6">
+        <Block eyebrow="Prima di tutto" title="Le nostre semplici regole">
+          <p className="text-pietra-600 leading-relaxed mb-8">
             Ciao e benvenuti nella nostra casa! Questo non è solo un appartamento in affitto,
             ma il luogo che chiamiamo "casa" per gran parte dell'anno. È pieno di cose che amiamo
             e di ricordi, e siamo entusiasti di condividere questo spazio con voi. Vi auguriamo
             di sentirvi a vostro agio e di vivere una vacanza indimenticabile, proprio come se
             foste a casa vostra.
           </p>
-          <ul className="space-y-3">
-            <Rule>
-              <strong>Vietato fumare all'interno.</strong> Potete farlo liberamente sul balcone,
-              usando gli appositi posacenere.
-            </Rule>
-            <Rule>
-              <strong>Animali domestici:</strong> Ci dispiace, ma non sono ammessi.
-            </Rule>
-            <Rule>
-              <strong>Feste ed eventi:</strong> L'appartamento è pensato per il relax, non sono
-              consentite feste o eventi.
-            </Rule>
-            <Rule>
-              <strong>Orari di silenzio:</strong> Per rispettare i vicini, vi chiediamo di
-              mantenere il silenzio dalle 23:00 alle 7:00.
-            </Rule>
-            <Rule>
-              <strong>Aria condizionata:</strong> Per essere efficienti e rispettosi
-              dell'ambiente, ricordate di tenere le finestre chiuse quando il condizionatore
-              è in funzione.
-            </Rule>
+          <ul className="space-y-4">
+            {[
+              ["🚭", "Vietato fumare all'interno", "Potete farlo liberamente sul balcone, usando gli appositi posacenere."],
+              ["🐾", "Animali domestici", "Ci dispiace, ma non sono ammessi."],
+              ["🎉", "Feste ed eventi", "L'appartamento è pensato per il relax, non sono consentite feste o eventi."],
+              ["🌙", "Orari di silenzio", "Per rispettare i vicini, vi chiediamo di mantenere il silenzio dalle 23:00 alle 7:00."],
+              ["❄️", "Aria condizionata", "Per essere efficienti e rispettosi dell'ambiente, ricordate di tenere le finestre chiuse quando il condizionatore è in funzione."],
+            ].map(([emoji, label, desc]) => (
+              <li key={label} className="flex gap-4 p-4 rounded-xl bg-white ring-1 ring-pietra-100">
+                <span className="text-xl shrink-0 mt-0.5">{emoji}</span>
+                <div>
+                  <p className="font-medium text-pietra-950">{label}</p>
+                  <p className="text-sm text-pietra-600 mt-0.5">{desc}</p>
+                </div>
+              </li>
+            ))}
           </ul>
-        </Section>
+        </Block>
 
-        <hr className="border-pietra-300 my-12" />
+        <Divider />
 
         {/* Comfort */}
-        <Section title="Comfort e istruzioni utili">
-          <InfoBlock title="Wi-Fi">
-            Il nome della rete è: <strong>CASA CON VISTA WIFI</strong><br />
-            La password è disponibile su un cartellino accanto al router.
-          </InfoBlock>
-          <InfoBlock title="Climatizzazione">
-            Ci sono due split (uno in soggiorno e uno nel corridoio) che si accendono con lo
-            stesso telecomando. Per attivarli entrambi, assicuratevi di puntare il telecomando
-            direttamente su entrambi gli split.
-            <br /><br />
-            <em>Un consiglio:</em> l'appartamento tende a riscaldarsi di più la mattina, quindi
-            vi suggeriamo di accendere il condizionatore in quelle ore. Dal primo pomeriggio,
-            la brezza marina rinfresca la casa in modo naturale!
-          </InfoBlock>
-          <InfoBlock title="Lavatrice & Bucato">
-            La lavatrice si trova in bagno ed è a vostra disposizione. Per il vostro soggiorno,
-            vi forniamo noi le capsule di detersivo.
-            <br /><br />
-            <strong>Attenzione al rumore:</strong> la lavatrice può essere rumorosa, quindi vi
-            preghiamo di usarla solo durante le ore diurne per non disturbare i vicini.
-            <br /><br />
-            <strong>Stendino:</strong> Il filo per stendere i panni si trova fuori dalle finestre
-            di cucina e bagno. Fate attenzione a non far cadere nulla! Sotto c'è una pensilina
-            e gli oggetti caduti non sono recuperabili.
-          </InfoBlock>
-        </Section>
+        <Block eyebrow="Tutto quello che vi serve" title="Comfort e istruzioni utili">
+          <div className="space-y-8">
+            <InfoCard icon="📶" title="Wi-Fi">
+              Nome rete: <strong className="text-pietra-950">CASA CON VISTA WIFI</strong><br />
+              La password è sul cartellino accanto al router.
+            </InfoCard>
+            <InfoCard icon="🌬️" title="Climatizzazione">
+              Ci sono due split — uno in soggiorno, uno nel corridoio — che si accendono con lo stesso telecomando.
+              Per attivarli entrambi puntate il telecomando verso ognuno.<br /><br />
+              <span className="text-pietra-500 text-sm italic">Consiglio: l'appartamento si riscalda di più la mattina — accendete il condizionatore in quelle ore. Dal primo pomeriggio entra la brezza del mare.</span>
+            </InfoCard>
+            <InfoCard icon="🫧" title="Lavatrice & Bucato">
+              La lavatrice è in bagno, le capsule di detersivo le trovate lì. Usatela solo di giorno per non disturbare i vicini.<br /><br />
+              <strong className="text-pietra-950">Stendino:</strong> il filo è fuori dalle finestre di cucina e bagno.
+              Fate attenzione a non far cadere nulla: sotto c'è una pensilina e gli oggetti caduti non sono recuperabili.
+            </InfoCard>
+          </div>
+        </Block>
 
-        <hr className="border-pietra-300 my-12" />
+        <Divider />
 
         {/* Caffè */}
-        <Section title="Il caffè perfetto">
-          <p className="text-pietra-700 leading-relaxed mb-4">
-            <strong>COME USARE</strong> la macchina <em>Didiesse Frog</em> per un caffè perfetto:
+        <Block eyebrow="Istruzioni" title="Il caffè perfetto">
+          <p className="text-pietra-600 leading-relaxed mb-6">
+            Come usare la macchina <em className="text-pietra-950">Didiesse Frog</em>:
           </p>
-          <ol className="space-y-4 text-pietra-800 leading-relaxed list-none">
-            <li className="flex gap-3">
-              <span className="font-bold text-adriatico-800 shrink-0">1.</span>
-              <span><strong>Accensione:</strong> Collegate la macchina, premete il tasto grande
-              e aspettate che la spia luminosa (solitamente verde) si spenga. I due tasti piccoli
-              non servono, ignorateli.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-bold text-adriatico-800 shrink-0">2.</span>
-              <span><strong>Acqua:</strong> Inserite il tubicino trasparente direttamente in una
-              bottiglia d'acqua.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-bold text-adriatico-800 shrink-0">3.</span>
-              <span><strong>Preparazione:</strong> Aprite la leva superiore, inserite una cialda
-              (non c'è un verso giusto o sbagliato) e abbassate completamente la leva. Mettete la
-              tazzina e premete il pulsante centrale.</span>
-            </li>
-            <li className="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <span className="font-bold text-amber-700 shrink-0">4.</span>
-              <span><strong>Dopo il caffè — ATTENZIONE!</strong><br />
-              È FONDAMENTALE rimuovere subito la cialda usata! Se la cialda si secca all'interno,
-              può rompersi e spargere il caffè macinato. Se dovesse succedere, abbassate la leva
-              e premete il pulsante di erogazione per inumidire la cialda e rimuoverla più
-              facilmente.</span>
-            </li>
+          <ol className="space-y-4">
+            {[
+              ["Accensione", "Collegate la macchina, premete il tasto grande e aspettate che la spia verde si spenga. I due tasti piccoli non servono."],
+              ["Acqua", "Inserite il tubicino trasparente direttamente in una bottiglia d'acqua."],
+              ["Preparazione", "Aprite la leva superiore, inserite una cialda (non c'è un verso giusto o sbagliato), abbassate la leva. Mettete la tazzina e premete il pulsante centrale."],
+            ].map(([step, desc], i) => (
+              <li key={step} className="flex gap-4 items-start">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-adriatico-950 text-schiuma-50 text-sm font-medium">
+                  {i + 1}
+                </span>
+                <div className="pt-1">
+                  <p className="font-medium text-pietra-950">{step}</p>
+                  <p className="text-sm text-pietra-600 mt-0.5">{desc}</p>
+                </div>
+              </li>
+            ))}
           </ol>
-        </Section>
+          <div className="mt-6 rounded-xl bg-amber-50 ring-1 ring-amber-200 p-4 flex gap-3">
+            <span className="text-xl shrink-0">⚠️</span>
+            <div>
+              <p className="font-medium text-amber-900">Dopo il caffè — importante!</p>
+              <p className="text-sm text-amber-800 mt-0.5">
+                Rimuovete subito la cialda usata. Se si secca può rompersi e spargere il caffè macinato.
+                Se succede: abbassate la leva e premete il pulsante di erogazione per inumidirla.
+              </p>
+            </div>
+          </div>
+        </Block>
 
-        <hr className="border-pietra-300 my-12" />
+        <Divider />
 
         {/* Raccolta differenziata */}
-        <Section title="Guida alla raccolta differenziata">
-          <p className="text-pietra-700 leading-relaxed mb-6">
-            La raccolta è porta a porta e per questo è importantissimo rispettare giorni e orari.
-            Vi forniamo noi tutti i sacchetti necessari.
+        <Block eyebrow="Raccolta porta a porta" title="Guida alla raccolta differenziata">
+          <p className="text-pietra-600 leading-relaxed mb-6">
+            È importantissimo rispettare giorni e orari. Vi forniamo noi tutti i sacchetti necessari.
           </p>
-          <div className="overflow-x-auto rounded-xl ring-1 ring-pietra-200">
-            <table className="w-full text-sm text-pietra-800">
-              <thead className="bg-pietra-100 text-pietra-600 text-[11px] uppercase tracking-widest">
-                <tr>
-                  <th className="text-left px-4 py-3">Sacchetto</th>
-                  <th className="text-left px-4 py-3">Cosa contiene</th>
-                  <th className="text-left px-4 py-3">Giorno</th>
-                  <th className="text-left px-4 py-3">Orario</th>
+          <div className="overflow-x-auto rounded-2xl ring-1 ring-pietra-200">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-pietra-50 border-b border-pietra-200">
+                  <th className="text-left px-5 py-3 text-[11px] uppercase tracking-widest2 text-pietra-500 font-medium">Sacchetto</th>
+                  <th className="text-left px-5 py-3 text-[11px] uppercase tracking-widest2 text-pietra-500 font-medium">Cosa contiene</th>
+                  <th className="text-left px-5 py-3 text-[11px] uppercase tracking-widest2 text-pietra-500 font-medium">Giorno</th>
+                  <th className="text-left px-5 py-3 text-[11px] uppercase tracking-widest2 text-pietra-500 font-medium">Orario</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-pietra-100 bg-white">
-                <tr>
-                  <td className="px-4 py-3 font-semibold">🔵 Sacchetto Blu</td>
-                  <td className="px-4 py-3">Plastica, lattine, barattoli</td>
-                  <td className="px-4 py-3">Mercoledì e Sabato</td>
-                  <td className="px-4 py-3">7:00 – 9:00</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-semibold">📄 Sacchetto Carta</td>
-                  <td className="px-4 py-3">Carta, cartoncini, giornali, Tetra Pak</td>
-                  <td className="px-4 py-3">Martedì</td>
-                  <td className="px-4 py-3">7:00 – 9:00</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-semibold">🟡 Sacchetto Giallo</td>
-                  <td className="px-4 py-3">Tutto ciò che non è differenziabile</td>
-                  <td className="px-4 py-3">Lunedì</td>
-                  <td className="px-4 py-3">7:00 – 9:00</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-semibold">🟤 Umido</td>
-                  <td className="px-4 py-3">Avanzi di cibo, tovaglioli, fondi di caffè</td>
-                  <td className="px-4 py-3">Contenitori stradali marroni</td>
-                  <td className="px-4 py-3">In qualsiasi momento</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-semibold">🟢 Vetro</td>
-                  <td className="px-4 py-3">Bottiglie, bicchieri, barattoli</td>
-                  <td className="px-4 py-3">Contenitori stradali verdi</td>
-                  <td className="px-4 py-3">In qualsiasi momento</td>
-                </tr>
+                {[
+                  ["🔵", "Blu", "Plastica, lattine, barattoli", "Mercoledì e Sabato", "7:00 – 9:00"],
+                  ["📄", "Carta", "Carta, cartoncini, giornali, Tetra Pak", "Martedì", "7:00 – 9:00"],
+                  ["🟡", "Giallo", "Tutto ciò che non è differenziabile", "Lunedì", "7:00 – 9:00"],
+                  ["🟤", "Umido", "Avanzi di cibo, tovaglioli, fondi di caffè", "Contenitori marroni in strada", "Sempre"],
+                  ["🟢", "Vetro", "Bottiglie, bicchieri, barattoli", "Contenitori verdi in strada", "Sempre"],
+                ].map(([emoji, name, content, day, time]) => (
+                  <tr key={name}>
+                    <td className="px-5 py-3 font-medium text-pietra-950">{emoji} {name}</td>
+                    <td className="px-5 py-3 text-pietra-600">{content}</td>
+                    <td className="px-5 py-3 text-pietra-800">{day}</td>
+                    <td className="px-5 py-3 text-adriatico-800 font-medium">{time}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-        </Section>
+        </Block>
 
-        <hr className="border-pietra-300 my-12" />
+        <Divider />
 
-        {/* Cura della casa */}
-        <Section title="Trattiamo la casa con cura">
-          <p className="text-pietra-700 leading-relaxed mb-4">
-            Come vi abbiamo detto, questa è la nostra casa. Ogni cosa, dai libri alla credenza,
-            ha una sua storia e un suo valore per noi. Vi preghiamo di trattare l'appartamento
-            con la stessa cura che mettereste nel vostro. Se qualcosa dovesse danneggiarsi,
-            vi chiediamo di avvisarci subito. Parlandone, troveremo una soluzione in modo sereno
-            e senza problemi. La vostra onestà è un gesto di grande rispetto.
+        {/* Cura */}
+        <Block eyebrow="Vi chiediamo" title="Trattiamo la casa con cura">
+          <p className="text-pietra-600 leading-relaxed mb-6">
+            Questa è la nostra casa. Ogni cosa, dai libri alla credenza, ha una sua storia e un suo
+            valore per noi. Vi preghiamo di trattarla con la stessa cura che mettereste nel vostro.
+            Se qualcosa dovesse danneggiarsi, avvisateci subito: troveremo una soluzione in modo
+            sereno. La vostra onestà è un gesto di grande rispetto.
           </p>
-          <ul className="space-y-2">
-            <Rule>I libri e le riviste sono a vostra disposizione per la lettura, vi preghiamo solo di rimetterli al loro posto.</Rule>
-            <Rule><strong>Importante:</strong> La credenza sopra la TV non va aperta, né forzata. Grazie per la vostra collaborazione.</Rule>
-          </ul>
-        </Section>
+          <div className="rounded-xl bg-white ring-1 ring-pietra-100 p-5 space-y-3">
+            <p className="text-sm text-pietra-700">📚 I libri e le riviste sono a vostra disposizione per la lettura — rimetteteli al loro posto.</p>
+            <p className="text-sm text-pietra-700 font-medium">🚫 La credenza sopra la TV non va aperta, né forzata. Grazie.</p>
+          </div>
+        </Block>
 
-        <hr className="border-pietra-300 my-12" />
+        <Divider />
 
         {/* Playlist */}
-        <Section title="Per un'atmosfera perfetta">
-          <p className="text-pietra-700 leading-relaxed">
-            Se cercate la colonna sonora ideale per godervi un tramonto indimenticabile,
-            vi consigliamo questa playlist su Spotify:{" "}
-            <a
-              href="https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-adriatico-800 underline font-medium"
-            >
-              A LA SALA
-            </a>
+        <Block eyebrow="Per il tramonto" title="Per un'atmosfera perfetta">
+          <p className="text-pietra-600 leading-relaxed mb-6">
+            Se cercate la colonna sonora ideale per godervi un tramonto indimenticabile dal balcone,
+            vi consigliamo questa playlist:
           </p>
-        </Section>
+          <a
+            href="https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 rounded-full bg-[#1DB954] text-white h-11 px-6 text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            A LA SALA su Spotify
+          </a>
+        </Block>
 
-        <hr className="border-pietra-300 my-12" />
-
-        {/* Footer CTA */}
-        <div className="text-center rounded-2xl bg-pietra-950 text-schiuma-50 p-8 sm:p-10">
-          <h2 className="font-serif text-2xl mb-2">Hai bisogno di qualcosa?</h2>
-          <p className="text-schiuma-100/80 mb-6 text-sm">
-            Sono sempre disponibile. Scrivimi su WhatsApp e ti rispondo al più presto.
+        {/* CTA finale */}
+        <div className="rounded-2xl bg-adriatico-950 text-schiuma-50 p-8 sm:p-12 text-center">
+          <p className="text-xs uppercase tracking-widest2 text-schiuma-100/60 mb-3">Sempre disponibile</p>
+          <h2 className="font-serif text-3xl sm:text-4xl text-schiuma-50 mb-3">
+            Hai bisogno di qualcosa?
+          </h2>
+          <p className="text-schiuma-100/70 mb-8 max-w-sm mx-auto">
+            Scrivimi su WhatsApp e ti rispondo al più presto.
           </p>
           <a
             href="https://wa.me/393351672597"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white h-11 px-6 text-sm font-medium hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white h-12 px-8 text-sm font-medium hover:opacity-90 transition-opacity"
           >
             <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden>
               <path d="M19.11 17.39c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.98 2.65 1.12 2.84.14.18 1.94 2.97 4.71 4.16.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.18.16-1.3-.07-.12-.25-.18-.52-.32zM16.02 6.18c-5.42 0-9.83 4.41-9.83 9.83 0 1.92.56 3.79 1.61 5.41l-1.06 3.86 3.97-1.04a9.81 9.81 0 0 0 5.31 1.55h.01c5.42 0 9.83-4.41 9.83-9.83a9.78 9.78 0 0 0-2.88-6.95 9.78 9.78 0 0 0-6.96-2.83zm0 17.91h-.01a8.16 8.16 0 0 1-4.16-1.14l-.3-.18-3.07.81.82-2.99-.2-.31a8.13 8.13 0 0 1-1.25-4.35c0-4.51 3.67-8.17 8.18-8.17 2.18 0 4.23.85 5.78 2.4a8.12 8.12 0 0 1 2.39 5.78c0 4.51-3.67 8.17-8.18 8.17z" />
@@ -245,31 +222,28 @@ export default function BenvenutiPage() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="mb-2">
-      <h2 className="text-3xl sm:text-4xl font-bold text-pietra-950 leading-tight mb-6">
-        {title}
-      </h2>
-      <div className="text-pietra-800 leading-relaxed">{children}</div>
+    <section>
+      <p className="text-xs uppercase tracking-widest2 text-adriatico-700/80 mb-3">{eyebrow}</p>
+      <h2 className="font-serif text-3xl sm:text-4xl text-pietra-950 leading-tight mb-8">{title}</h2>
+      {children}
     </section>
   );
 }
 
-function Rule({ children }: { children: React.ReactNode }) {
+function InfoCard({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
   return (
-    <li className="flex gap-3 items-start">
-      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-adriatico-700 shrink-0" />
-      <span className="text-pietra-800 leading-relaxed">{children}</span>
-    </li>
+    <div className="rounded-2xl bg-white ring-1 ring-pietra-100 p-6">
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-2xl">{icon}</span>
+        <h3 className="font-serif text-xl text-pietra-950">{title}</h3>
+      </div>
+      <p className="text-sm text-pietra-600 leading-relaxed">{children}</p>
+    </div>
   );
 }
 
-function InfoBlock({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-6">
-      <h3 className="font-bold text-pietra-950 text-lg mb-2">{title}</h3>
-      <p className="text-pietra-700 leading-relaxed">{children}</p>
-    </div>
-  );
+function Divider() {
+  return <hr className="border-pietra-200" />;
 }
