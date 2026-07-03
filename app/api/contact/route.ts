@@ -1,11 +1,5 @@
 import { NextResponse } from "next/server";
-
-// Form contatti — invia la richiesta a luca@casaconvistaportorecanati.it via Resend.
-//
-// Env var da impostare su Vercel (Project → Settings → Environment Variables):
-//   RESEND_API_KEY       — API key di Resend (resend.com → API Keys)
-//   CONTACT_FROM_EMAIL   — mittente verificato su Resend, es. noreply@casaconvistaportorecanati.it
-//   CONTACT_TO_EMAIL     — destinatario, es. luca@casaconvistaportorecanati.it
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
@@ -42,38 +36,43 @@ export async function POST(request: Request) {
   if (!name || name.length < 2) return bad("Name is required");
   if (!email || !EMAIL_RE.test(email)) return bad("Valid email is required");
 
-  console.log("[contact] new request", { name, email, dates, guests, message, locale: data.locale, at: new Date().toISOString() });
+  console.log("[contact] new request", { name, email, dates, guests, locale: data.locale });
 
-  const resendKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const toEmail = process.env.CONTACT_TO_EMAIL ?? "luca@casaconvistaportorecanati.it";
+  const resendKey = (process.env.RESEND_API_KEY ?? "").trim();
+  const fromEmail = (process.env.CONTACT_FROM_EMAIL ?? "").trim();
+  const toEmail = (process.env.CONTACT_TO_EMAIL ?? "luca@casaconvistaportorecanati.it").trim();
 
-  if (resendKey && fromEmail) {
-    try {
-      const { Resend } = await import("resend");
-      const resend = new Resend(resendKey);
-      await resend.emails.send({
-        from: fromEmail,
-        to: toEmail,
-        replyTo: email,
-        subject: `Nuova richiesta da ${name} — Casa con Vista`,
-        html: `
-          <h2>Nuova richiesta dal sito</h2>
-          <p><strong>Nome:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          ${dates ? `<p><strong>Date:</strong> ${dates}</p>` : ""}
-          ${guests ? `<p><strong>Ospiti:</strong> ${guests}</p>` : ""}
-          ${message ? `<p><strong>Messaggio:</strong><br>${message.replace(/\n/g, "<br>")}</p>` : ""}
-          <hr>
-          <p style="color:#888;font-size:12px">Puoi rispondere direttamente a questa email: la reply andrà a ${email}</p>
-        `,
-      });
-    } catch (err) {
-      console.error("[contact] Resend failed", err);
-      // Non blocchiamo l'utente se l'email fallisce: loghiamo e restituiamo ok
+  if (!resendKey || !fromEmail) {
+    console.warn("[contact] RESEND_API_KEY o CONTACT_FROM_EMAIL mancanti");
+    return NextResponse.json({ ok: true });
+  }
+
+  try {
+    const resend = new Resend(resendKey);
+    const { error } = await resend.emails.send({
+      from: fromEmail,
+      to: toEmail,
+      replyTo: email,
+      subject: `Nuova richiesta da ${name} — Casa con Vista`,
+      html: `
+        <h2>Nuova richiesta dal sito</h2>
+        <p><strong>Nome:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        ${dates ? `<p><strong>Date:</strong> ${dates}</p>` : ""}
+        ${guests ? `<p><strong>Ospiti:</strong> ${guests}</p>` : ""}
+        ${message ? `<p><strong>Messaggio:</strong><br>${message.replace(/\n/g, "<br>")}</p>` : ""}
+        <hr>
+        <p style="color:#888;font-size:12px">Rispondi direttamente a questa email: la reply va a ${email}</p>
+      `,
+    });
+
+    if (error) {
+      console.error("[contact] Resend error", JSON.stringify(error));
+    } else {
+      console.log("[contact] email inviata a", toEmail);
     }
-  } else {
-    console.warn("[contact] RESEND_API_KEY o CONTACT_FROM_EMAIL non impostati — email non inviata");
+  } catch (err) {
+    console.error("[contact] eccezione Resend", err);
   }
 
   return NextResponse.json({ ok: true });

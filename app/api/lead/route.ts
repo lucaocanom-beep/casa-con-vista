@@ -1,15 +1,5 @@
 import { NextResponse } from "next/server";
-
-// Popup "guida gratuita" — lead magnet.
-// Al submit:
-//   1. Aggiunge il contatto al gruppo MailerLite → parte l'automation di nurturing
-//   2. (Opzionale) Invia email transazionale via Resend come backup immediato
-//
-// Env var da impostare su Vercel (Project → Settings → Environment Variables):
-//   MAILERLITE_API_KEY      — API key v2 di MailerLite (Account → Integrations → API)
-//   MAILERLITE_GROUP_ID     — ID del gruppo "Guida Porto Recanati" creato in MailerLite
-//   RESEND_API_KEY          — (opzionale) per email transazionale di backup
-//   CONTACT_FROM_EMAIL      — mittente verificato su Resend, es. noreply@casaconvistaportorecanati.it
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
@@ -40,15 +30,14 @@ export async function POST(request: Request) {
   if (!name || name.length < 2) return bad("Name is required");
   if (!email || !EMAIL_RE.test(email)) return bad("Valid email is required");
 
-  console.log("[lead] guida richiesta", { name, email, locale, at: new Date().toISOString() });
+  console.log("[lead] guida richiesta", { name, email, locale });
 
   // 1. Aggiungi a MailerLite
-  const mlKey = process.env.MAILERLITE_API_KEY;
-  const mlGroup = process.env.MAILERLITE_GROUP_ID;
+  const mlKey = (process.env.MAILERLITE_API_KEY ?? "").trim();
+  const mlGroup = (process.env.MAILERLITE_GROUP_ID ?? "").trim();
 
   if (mlKey && mlGroup) {
     try {
-      // Crea/aggiorna il subscriber
       const subRes = await fetch("https://connect.mailerlite.com/api/subscribers", {
         method: "POST",
         headers: {
@@ -65,28 +54,26 @@ export async function POST(request: Request) {
       });
 
       if (!subRes.ok) {
-        const err = await subRes.text();
-        console.error("[lead] MailerLite error", subRes.status, err);
+        console.error("[lead] MailerLite error", subRes.status, await subRes.text());
       } else {
-        console.log("[lead] MailerLite: subscriber aggiunto al gruppo", mlGroup);
+        console.log("[lead] MailerLite: subscriber aggiunto");
       }
     } catch (err) {
       console.error("[lead] MailerLite fetch failed", err);
     }
   } else {
-    console.warn("[lead] MAILERLITE_API_KEY o MAILERLITE_GROUP_ID non impostati — subscriber non aggiunto");
+    console.warn("[lead] MAILERLITE_API_KEY o MAILERLITE_GROUP_ID mancanti");
   }
 
-  // 2. Email transazionale di backup via Resend (opzionale)
-  const resendKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://casaconvistaportorecanati.it";
+  // 2. Email di conferma via Resend
+  const resendKey = (process.env.RESEND_API_KEY ?? "").trim();
+  const fromEmail = (process.env.CONTACT_FROM_EMAIL ?? "").trim();
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://casaconvistaportorecanati.it").trim();
 
   if (resendKey && fromEmail) {
     try {
-      const { Resend } = await import("resend");
       const resend = new Resend(resendKey);
-      await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: fromEmail,
         to: email,
         replyTo: "luca@casaconvistaportorecanati.it",
@@ -94,11 +81,17 @@ export async function POST(request: Request) {
           ? "La tua guida di Porto Recanati e delle Marche"
           : "Your guide to Porto Recanati and the Marche",
         html: locale === "it"
-          ? `<p>Ciao ${name},</p><p>grazie per il tuo interesse! Ecco la tua guida: <a href="${siteUrl}/guida">${siteUrl}/guida</a></p><p>A presto,<br>Luca — Casa con Vista</p>`
-          : `<p>Hi ${name},</p><p>thanks for your interest! Here's your guide: <a href="${siteUrl}/guida">${siteUrl}/guida</a></p><p>See you soon,<br>Luca — Casa con Vista</p>`,
+          ? `<p>Ciao ${name},</p><p>grazie! Ecco la tua guida: <a href="${siteUrl}/guida">${siteUrl}/guida</a></p><p>A presto,<br>Luca — Casa con Vista</p>`
+          : `<p>Hi ${name},</p><p>thanks! Here's your guide: <a href="${siteUrl}/guida">${siteUrl}/guida</a></p><p>See you soon,<br>Luca — Casa con Vista</p>`,
       });
+
+      if (error) {
+        console.error("[lead] Resend error", JSON.stringify(error));
+      } else {
+        console.log("[lead] email guida inviata a", email);
+      }
     } catch (err) {
-      console.error("[lead] Resend failed", err);
+      console.error("[lead] Resend eccezione", err);
     }
   }
 
