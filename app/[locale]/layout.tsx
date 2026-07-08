@@ -75,7 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} className={`${fontSans.variable} ${fontSerif.variable}`}>
-      <head>
+      <body className="min-h-screen flex flex-col">
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-GCT99ZSCQV" strategy="afterInteractive" />
         <Script id="ga-init" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];
@@ -83,8 +83,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           gtag('js', new Date());
           gtag('config', 'G-GCT99ZSCQV');
         `}</Script>
-      </head>
-      <body className="min-h-screen flex flex-col">
         {/* Skip link: visibile solo quando riceve focus (utenti tastiera/screen reader) */}
         <a
           href="#main"
