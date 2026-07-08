@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import Script from "next/script";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 import { notFound } from "next/navigation";
 import { isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -76,23 +76,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${fontSans.variable} ${fontSerif.variable}`}>
       <body className="min-h-screen flex flex-col">
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-GCT99ZSCQV" strategy="afterInteractive" />
-        <Script id="ga-init" strategy="afterInteractive">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-GCT99ZSCQV');
-        `}</Script>
-        <Script id="meta-pixel" strategy="afterInteractive">{`
-          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-          (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init','1028679406276713');
-          fbq('track','PageView');
-        `}</Script>
-        <noscript>{`<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1028679406276713&ev=PageView&noscript=1"/>`}</noscript>
         {/* Skip link: visibile solo quando riceve focus (utenti tastiera/screen reader) */}
         <a
           href="#main"
@@ -105,6 +88,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Footer locale={locale} dict={dict} />
         <WhatsAppFloat locale={locale} dict={dict} />
         <LeadMagnetPopup locale={locale} dict={dict} />
+        <CookieBanner locale={locale} />
       </body>
     </html>
   );
