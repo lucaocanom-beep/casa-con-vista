@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -74,6 +75,15 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} className={`${fontSans.variable} ${fontSerif.variable}`}>
+      <head>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-GCT99ZSCQV" strategy="afterInteractive" />
+        <Script id="ga-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GCT99ZSCQV');
+        `}</Script>
+      </head>
       <body className="min-h-screen flex flex-col">
         {/* Skip link: visibile solo quando riceve focus (utenti tastiera/screen reader) */}
         <a
