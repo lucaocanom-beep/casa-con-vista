@@ -16,6 +16,7 @@ export const it = {
     servizi: "Servizi",
     casa: "La casa",
     posizione: "Posizione",
+    disponibilita: "Disponibilità",
     prezzi: "Prezzi",
     recensioni: "Recensioni",
     faq: "FAQ",
@@ -183,6 +184,28 @@ export const it = {
         desc: "La città di Leopardi, vista sull'infinito.",
       },
     },
+  },
+
+  disponibilita: {
+    eyebrow: "Disponibilità",
+    title: "Guarda le date libere",
+    body: "Il calendario si aggiorna più volte al giorno dalle nostre prenotazioni.",
+    calendar: {
+      prevMonth: "Mese precedente",
+      nextMonth: "Mese successivo",
+      legendFree: "Libero",
+      legendBusy: "Occupato",
+      legendPast: "Data passata",
+      unavailableMessage:
+        "Calendario momentaneamente non disponibile — scrivimi per verificare le date.",
+      weekdays: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"],
+      months: [
+        "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+        "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre",
+      ],
+    },
+    ctaText: "Disponibilità indicativa, aggiornata più volte al giorno. Per conferma e per prenotare, scrivimi.",
+    ctaLink: "scrivimi",
   },
 
   prezzi: {

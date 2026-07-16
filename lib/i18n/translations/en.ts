@@ -16,6 +16,7 @@ export const en: typeof ItDict = {
     servizi: "Highlights",
     casa: "The house",
     posizione: "Location",
+    disponibilita: "Availability",
     prezzi: "Rates",
     recensioni: "Reviews",
     faq: "FAQ",
@@ -183,6 +184,28 @@ export const en: typeof ItDict = {
         desc: "Leopardi's town, with its view onto the infinite.",
       },
     },
+  },
+
+  disponibilita: {
+    eyebrow: "Availability",
+    title: "See the open dates",
+    body: "The calendar updates several times a day from our bookings.",
+    calendar: {
+      prevMonth: "Previous month",
+      nextMonth: "Next month",
+      legendFree: "Free",
+      legendBusy: "Booked",
+      legendPast: "Past date",
+      unavailableMessage:
+        "Calendar temporarily unavailable — write to me to check dates.",
+      weekdays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      months: [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December",
+      ],
+    },
+    ctaText: "Availability is indicative and updated several times a day. To confirm dates and book, just write to me.",
+    ctaLink: "write to me",
   },
 
   prezzi: {

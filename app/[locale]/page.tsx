@@ -8,6 +8,7 @@ import { Galleria } from "@/components/sections/Galleria";
 import { Servizi } from "@/components/sections/Servizi";
 import { Casa } from "@/components/sections/Casa";
 import { Posizione } from "@/components/sections/Posizione";
+import { Disponibilita } from "@/components/sections/Disponibilita";
 import { Prezzi } from "@/components/sections/Prezzi";
 import { Recensioni } from "@/components/sections/Recensioni";
 import { Faq } from "@/components/sections/Faq";
@@ -33,6 +34,7 @@ export default async function HomePage({ params }: Props) {
       <Servizi dict={dict} />
       <Casa dict={dict} />
       <Posizione dict={dict} />
+      <Disponibilita dict={dict} locale={locale} />
       <Prezzi dict={dict} locale={locale} />
       <Recensioni dict={dict} />
       <Faq dict={dict} />

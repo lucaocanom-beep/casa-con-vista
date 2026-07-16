@@ -120,6 +120,7 @@ export const sections = [
   { id: "servizi", navKey: "servizi" },
   { id: "casa", navKey: "casa" },
   { id: "posizione", navKey: "posizione" },
+  { id: "disponibilita", navKey: "disponibilita" },
   { id: "prezzi", navKey: "prezzi" },
   { id: "recensioni", navKey: "recensioni" },
   { id: "faq", navKey: "faq" },
